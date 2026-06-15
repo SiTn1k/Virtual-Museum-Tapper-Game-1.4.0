@@ -489,7 +489,7 @@ function App() {
                   Відкривайте скрині за {100 * (EPOCHS.findIndex(e => e.id === epoch.id) + 1)} {epoch.currencyIcon} та збирайте унікальні артефакти.
                 </p>
                 <p className="text-xs text-gray-500 mt-1">
-                  Шанси: Звичайний 55% | Рідкісний 30% | Епічний 12% | Легендарний 3%
+                  Шанси: Звичайний 39% | Рідкісний 35% | Епічний 18% | Легендарний 8%
                 </p>
               </div>
 
@@ -500,6 +500,7 @@ function App() {
                   const parts = state.artifactParts?.[artifact.id] || 0;
                   const isComplete = state.completedArtifacts?.includes(artifact.id);
                   const dupeCount = state.artifactDupes?.[artifact.id] || 0;
+                  const artifactEpoch = EPOCHS.find(e => e.id === artifact.epoch);
 
                   return (
                     <div
@@ -515,6 +516,9 @@ function App() {
                       <div className="text-2xl sm:text-3xl mb-1">{isUnlocked ? artifact.icon : '?'}</div>
                       <div className="text-xs font-medium truncate">
                         {isUnlocked ? artifact.name.ua : '???'}
+                      </div>
+                      <div className="text-xs text-gray-500 truncate">
+                        {isUnlocked && artifactEpoch ? artifactEpoch.name.ua : '???'}
                       </div>
                       <div className={`text-xs ${
                         artifact.rarity === 'legendary' ? 'text-yellow-400' :
