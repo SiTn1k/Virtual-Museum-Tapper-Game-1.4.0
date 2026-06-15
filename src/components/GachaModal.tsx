@@ -34,12 +34,12 @@ function pickArtifact(
   const rand = Math.random();
   let result: Artifact | null = null;
 
-  // Weights: legendary 3%, epic 12%, rare 30%, common 55%
-  if (rand < 0.03 && byRarity.legendary.length > 0) {
+  // Weights: legendary 8%, epic 18%, rare 35%, common 39%
+  if (rand < 0.08 && byRarity.legendary.length > 0) {
     result = byRarity.legendary[Math.floor(Math.random() * byRarity.legendary.length)];
-  } else if (rand < 0.15 && byRarity.epic.length > 0) {
+  } else if (rand < 0.26 && byRarity.epic.length > 0) {
     result = byRarity.epic[Math.floor(Math.random() * byRarity.epic.length)];
-  } else if (rand < 0.45 && byRarity.rare.length > 0) {
+  } else if (rand < 0.61 && byRarity.rare.length > 0) {
     result = byRarity.rare[Math.floor(Math.random() * byRarity.rare.length)];
   } else if (byRarity.common.length > 0) {
     result = byRarity.common[Math.floor(Math.random() * byRarity.common.length)];
@@ -52,7 +52,7 @@ function pickArtifact(
 
   if (!result) return null;
 
-  return { artifact: result, isFull: Math.random() < 0.08 };
+  return { artifact: result, isFull: Math.random() < 0.15 };
 }
 
 export function GachaModal({
