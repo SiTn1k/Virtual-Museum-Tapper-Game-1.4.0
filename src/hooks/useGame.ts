@@ -48,8 +48,8 @@ function calculateXpToLevel(level: number): number {
   const rangeSize = Math.max(1, max - min + 1);
   const progress = Math.min(1, Math.max(0, (level - min) / rangeSize)); // 0 at epoch start, ~1 at end
 
-  // Target time: 5 min at epoch start → 3 hr at epoch end
-  const targetSeconds = 300 + progress * (10800 - 300);
+  // Target time: 2 min at epoch start → 1 hr at epoch end (reduced from 5 min → 3 hr)
+  const targetSeconds = 120 + progress * (3600 - 120);
 
   // Estimate passive XP/s for this level within the epoch
   // Use the epoch's base production scaling × level factor
