@@ -1,1 +1,0 @@
-ALTER TABLE game_progress ADD COLUMN IF NOT EXISTS epoch_id text NOT NULL DEFAULT 'trypillia';

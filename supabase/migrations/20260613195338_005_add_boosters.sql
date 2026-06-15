@@ -1,1 +1,0 @@
-ALTER TABLE game_progress ADD COLUMN IF NOT EXISTS active_boosters JSONB NOT NULL DEFAULT '{}';
