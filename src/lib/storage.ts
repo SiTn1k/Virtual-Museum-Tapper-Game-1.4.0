@@ -29,7 +29,8 @@ function calculateXpToLevel(level: number): number {
   const { min, max } = epoch.levelRange;
   const rangeSize = Math.max(1, max - min + 1);
   const progress = Math.min(1, Math.max(0, (level - min) / rangeSize));
-  const targetSeconds = 300 + progress * (10800 - 300);
+  // Target time: 2 min at epoch start → 1 hr at epoch end (reduced from 5 min → 3 hr)
+  const targetSeconds = 120 + progress * (3600 - 120);
   const levelInEpoch = Math.max(1, level - min + 1);
   const estimatedPassive = estimatePassiveForEpoch(epoch, levelInEpoch);
   return Math.max(50, Math.floor(estimatedPassive * targetSeconds));
